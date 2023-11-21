@@ -5,10 +5,11 @@ import {Link} from "react-router-dom";
 
 const MainPage = () => {
     const [posts, setPosts] = useState([])
-    useEffect(() => {
+     useEffect(() => {
         const getPost = async ()=> {
-            const resp = await axios.get('https://dummyjson.com/posts')
-            setPosts(resp.data.posts)
+            const resp = await axios.get('https://dummyjson.com/users')
+            setPosts(resp.data.users)
+            console.log(resp.data.users)
         }
         getPost()
     }, [])
@@ -20,7 +21,7 @@ const MainPage = () => {
                 {posts.map((post) => (
                     <li key={post.id}>
                         <p>
-                            <Link to={`/posts/${post.id}`}>{post.title}</Link>
+                            <Link to={`/posts/${post.id}`}>User:     {post.username}</Link>
                         </p>
                     </li>
                 ))}
